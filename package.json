@@ -1,0 +1,79 @@
+{
+  "name": "@jupiterone/graph-google-cloud",
+  "version": "2.26.0",
+  "description": "A graph conversion tool for https://cloud.google.com/",
+  "license": "MPL-2.0",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "files": [
+    "src",
+    "jupiterone"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "start": "LOG_LEVEL=trace j1-integration collect",
+    "graph": "j1-integration visualize",
+    "graph:types": "j1-integration visualize-types",
+    "graph:spec": "j1-integration visualize-types --project-path docs/spec --output-file ./.j1-integration/types-graph/index.spec.html",
+    "validate:questions:dry": "j1-integration validate-question-file --dry-run",
+    "validate:questions": "j1-integration validate-question-file -a $JUPITERONE_ACCOUNT_ID -k $JUPITERONE_API_KEY",
+    "lint": "eslint . --cache --fix --ext .ts,.tsx",
+    "format": "prettier --write '**/*.{ts,js,json,css,md,yml}'",
+    "type-check": "tsc",
+    "test:env": "LOAD_ENV=1 yarn test",
+    "test": "yarn validate:questions:dry && NODE_OPTIONS='--max-old-space-size=4096' yarn jest",
+    "test:ci": "yarn lint && yarn type-check && yarn test",
+    "build": "./build.sh",
+    "prepush": "yarn lint && yarn type-check && jest --changedSince main",
+    "postversion": "cp package.json ./dist/package.json",
+    "tf": "cd terraform && env `grep -v '^#' .env` terraform $1",
+    "create-env-file": "yarn ts-node ./scripts/createEnvFile $1",
+    "document:permissions": " yarn ts-node commands/documentPermissions.ts documentPermissions"
+  },
+  "peerDependencies": {
+    "@jupiterone/integration-sdk-core": "^8.37.0"
+  },
+  "devDependencies": {
+    "@jupiterone/integration-sdk-core": "^8.37.0",
+    "@jupiterone/integration-sdk-dev-tools": "^8.37.0",
+    "@jupiterone/integration-sdk-testing": "^8.37.0",
+    "@types/bunyan": "^1.8.6",
+    "@types/bunyan-format": "^0.2.3",
+    "@types/node-fetch": "^2.5.10",
+    "auto": "^10.37.4",
+    "bunyan": "^1.8.15",
+    "bunyan-format": "^0.2.1",
+    "cac": "^6.7.3",
+    "dotenv": "^9.0.2",
+    "mutton": "^0.5.1",
+    "node-fetch": "^2.6.1",
+    "ts-node": "^9.1.1"
+  },
+  "dependencies": {
+    "@lifeomic/attempt": "^3.0.0",
+    "commander": "^9.4.1",
+    "gaxios": "^4.2.1",
+    "google-auth-library": "^7.1.0",
+    "googleapis": "130.0.0",
+    "lodash.get": "^4.4.2",
+    "p-map": "^4.0.0"
+  },
+  "auto": {
+    "plugins": [
+      [
+        "npm",
+        {
+          "setRcToken": false,
+          "publishFolder": "./dist"
+        }
+      ],
+      "released"
+    ],
+    "onlyPublishWithReleaseLabel": true,
+    "shipit": {
+      "prerelease": false
+    }
+  }
+}

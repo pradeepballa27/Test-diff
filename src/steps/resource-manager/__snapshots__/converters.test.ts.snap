@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#createAuditConfigEntity should convert to entity 1`] = `
+Object {
+  "_class": Array [
+    "Configuration",
+  ],
+  "_key": "auditConfig:sample.service.com",
+  "_rawData": Array [
+    Object {
+      "name": "default",
+      "rawData": Object {
+        "auditLogConfigs": Array [
+          Object {
+            "logType": "SAMPLE_LOG",
+          },
+        ],
+        "service": "sample.service.com",
+      },
+    },
+  ],
+  "_type": "google_cloud_audit_config",
+  "createdOn": undefined,
+  "displayName": "auditConfig:sample.service.com",
+  "logTypes": Array [
+    "SAMPLE_LOG",
+  ],
+  "name": "auditConfig:sample.service.com",
+  "service": "sample.service.com",
+}
+`;
+
+exports[`#createOrganizationEntity should convert to entity 1`] = `
+Object {
+  "_class": Array [
+    "Organization",
+  ],
+  "_key": "organizations/958457776463",
+  "_rawData": Array [
+    Object {
+      "name": "default",
+      "rawData": Object {
+        "createTime": "2021-05-26T21:15:56.407Z",
+        "directoryCustomerId": "C048tgq5f",
+        "displayName": "jupiterone.dev",
+        "name": "organizations/958457776463",
+        "state": "ACTIVE",
+        "updateTime": "2021-05-26T21:15:57.407Z",
+      },
+    },
+  ],
+  "_type": "google_cloud_organization",
+  "createdOn": 1622063756407,
+  "directoryCustomerId": "C048tgq5f",
+  "displayName": "jupiterone.dev",
+  "etag": undefined,
+  "lifecycleState": "ACTIVE",
+  "name": "organizations/958457776463",
+  "updatedOn": 1622063757407,
+}
+`;
+
+exports[`#createProjectEntity should convert entity 1`] = `
+Object {
+  "_class": Array [
+    "Account",
+  ],
+  "_key": "projects/619127027446",
+  "_rawData": Array [
+    Object {
+      "name": "default",
+      "rawData": Object {
+        "createTime": "2021-05-31T15:45:06.340Z",
+        "displayName": "My First Project",
+        "etag": "Woe+unJqYGNKmCl1jbZyug==",
+        "name": "projects/619127027446",
+        "parent": "organizations/958457776463",
+        "projectId": "winged-guild-315415",
+        "state": "ACTIVE",
+        "updateTime": "2021-05-31T15:45:08.564Z",
+      },
+    },
+  ],
+  "_type": "google_cloud_project",
+  "createdOn": 1622475906340,
+  "displayName": "My First Project",
+  "id": "winged-guild-315415",
+  "lifecycleState": "ACTIVE",
+  "name": "projects/619127027446",
+  "parent": "organizations/958457776463",
+  "projectId": "winged-guild-315415",
+  "updatedOn": 1622475908564,
+  "webLink": "https://console.cloud.google.com/home/dashboard?project=winged-guild-315415",
+}
+`;
+
+exports[`#createProjectEntity should convert entity with just projectId 1`] = `
+Object {
+  "_class": Array [
+    "Account",
+  ],
+  "_key": "j1-gc-integration-dev-v2",
+  "_rawData": Array [],
+  "_type": "google_cloud_project",
+  "createdOn": undefined,
+  "displayName": "j1-gc-integration-dev-v2",
+  "id": "j1-gc-integration-dev-v2",
+  "lifecycleState": undefined,
+  "name": "j1-gc-integration-dev-v2",
+  "parent": undefined,
+  "projectId": "j1-gc-integration-dev-v2",
+  "updatedOn": undefined,
+  "webLink": "https://console.cloud.google.com/home/dashboard?project=j1-gc-integration-dev-v2",
+}
+`;
